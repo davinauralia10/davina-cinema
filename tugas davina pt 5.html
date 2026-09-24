@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Davina Cinema</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           COLOR PALETTE
+           Cream  : #F8F3ED
+           Rose   : #B96F82
+           Sage   : #879B87
+           Dark   : #302A2C
+           ===================================================== */
+
+        :root {
+            --cream: #F8F3ED;
+            --cream-dark: #EFE5DC;
+            --rose: #B96F82;
+            --rose-light: #D9AAB5;
+            --rose-pale: #F1DDE1;
+            --sage: #879B87;
+            --sage-light: #DDE5DC;
+            --dark: #302A2C;
+            --gray: #71696B;
+            --white: #FFFFFF;
+            --border: #E4D7D0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+        }
+
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 16px 6%;
+
+            background: rgba(248, 243, 237, 0.94);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--rose);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 27px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 14px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--rose);
+        }
+
+        /* =====================================================
+           HOME
+           ===================================================== */
+
+        #home {
+            min-height: 670px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 90px 8%;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(248,243,237,.98) 0%,
+                    rgba(248,243,237,.92) 42%,
+                    rgba(248,243,237,.50) 70%,
+                    rgba(248,243,237,.15) 100%
+                ),
+                url("24.jpg.avif") center/cover;
+        }
+
+        #home::after {
+            content: "";
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            right: -100px;
+            top: -100px;
+
+            border-radius: 50%;
+
+            background: var(--rose-pale);
+
+            opacity: .7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 650px;
+        }
+
+        .small-title {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--rose);
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 70px;
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--rose);
+        }
+
+        .hero-subtitle {
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            color: var(--sage);
+
+            font-size: 17px;
+            letter-spacing: 3px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 16px;
+
+            max-width: 590px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: .3s;
+        }
+
+        .hero-btn.primary {
+            background: var(--rose);
+            color: white;
+            box-shadow: 0 8px 20px rgba(185,111,130,.25);
+        }
+
+        .hero-btn.primary:hover {
+            transform: translateY(-3px);
+            background: #a45f72;
+        }
+
+        .hero-btn.secondary {
+            border: 1px solid var(--rose);
+            color: var(--rose);
+            background: rgba(255,255,255,.6);
+        }
+
+        .hero-btn.secondary:hover {
+            background: var(--rose-pale);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 0;
+
+            margin-top: 45px;
+
+            max-width: 700px;
+
+            background: rgba(255,255,255,.58);
+
+            border: 1px solid rgba(255,255,255,.8);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 20px;
+
+            padding: 18px 5px;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+
+            border-right: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat strong {
+            display: block;
+
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+
+            color: var(--dark);
+        }
+
+        .stat span {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* =====================================================
+           GENERAL
+           ===================================================== */
+
+        section {
+            padding: 85px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading .eyebrow {
+            color: var(--rose);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+        }
+
+        /* =====================================================
+           MOVIES
+           ===================================================== */
+
+        #movies {
+            background: var(--cream);
+        }
+
+        .search-box {
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 15px 22px;
+
+            border: 1px solid var(--border);
+            border-radius: 30px;
+
+            outline: none;
+
+            background: white;
+            color: var(--dark);
+
+            font-size: 15px;
+
+            box-shadow: 0 5px 20px rgba(80,60,60,.05);
+        }
+
+        .search-box input:focus {
+            border-color: var(--rose);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-bottom: 40px;
+        }
+
+        .filter-buttons button {
+            padding: 9px 17px;
+
+            border: 1px solid var(--border);
+            border-radius: 30px;
+
+            background: white;
+            color: var(--gray);
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .filter-buttons button:hover,
+        .filter-buttons button.active {
+            background: var(--rose);
+            border-color: var(--rose);
+            color: white;
+        }
+
+        .movie-grid {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 20px;
+        }
+
+        .movie-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            box-shadow: 0 8px 25px rgba(70,50,50,.06);
+        }
+
+        .movie-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 35px rgba(70,50,50,.13);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 280px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .movie-info {
+            padding: 14px;
+        }
+
+        .movie-info h3 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 16px;
+
+            margin-bottom: 6px;
+        }
+
+        .movie-info p {
+            color: var(--sage);
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* =====================================================
+           GENRE
+           ===================================================== */
+
+        #genre-section {
+            background: #F2E9E2;
+        }
+
+        .genre-container {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .genre-card {
+            padding: 28px 15px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,.75);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: .3s;
+        }
+
+        .genre-card:hover {
+            transform: translateY(-5px);
+
+            border-color: var(--rose);
+
+            box-shadow: 0 10px 25px rgba(70,50,50,.08);
+        }
+
+        .genre-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            background: var(--rose-pale);
+
+            color: var(--rose);
+
+            font-size: 22px;
+        }
+
+        .genre-card h3 {
+            font-family: "Playfair Display", serif;
+
+            margin-bottom: 6px;
+        }
+
+        .genre-card p {
+            color: var(--gray);
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           TRAILERS
+           ===================================================== */
+
+        #trailers {
+            background: var(--cream);
+        }
+
+        .trailer-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+        .trailer-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 12px;
+
+            box-shadow: 0 8px 25px rgba(70,50,50,.06);
+
+            transition: .3s;
+        }
+
+        .trailer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trailer-card video {
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 12px;
+
+            background: #222;
+        }
+
+        .trailer-card h3 {
+            font-family: "Playfair Display", serif;
+
+            margin: 14px 5px 4px;
+
+            font-size: 17px;
+        }
+
+        .trailer-card p {
+            margin: 0 5px 8px;
+
+            color: var(--gray);
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           SUBSCRIPTION
+           ===================================================== */
+
+        #subscription {
+            background: #F2E9E2;
+        }
+
+        .subscription-container {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .subscription-card {
+            background: rgba(255,255,255,.8);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            transition: .3s;
+
+            position: relative;
+        }
+
+        .subscription-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow: 0 15px 30px rgba(70,50,50,.1);
+        }
+
+        .subscription-card.popular {
+            border: 2px solid var(--rose);
+        }
+
+        .popular-label {
+            position: absolute;
+
+            top: -13px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: var(--rose);
+
+            color: white;
+
+            padding: 5px 15px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .subscription-card h3 {
+            font-family: "Playfair Display", serif;
+
+            text-align: center;
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .price {
+            text-align: center;
+
+            color: var(--rose);
+
+            font-size: 27px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            color: var(--gray);
+
+            font-size: 12px;
+
+            font-weight: 400;
+        }
+
+        /*
+        ========================================================
+        ORDERED LIST
+        Ini bagian yang memenuhi perintah tugas dosen.
+        ========================================================
+        */
+
+        .subscription-card ol {
+            padding-left: 23px;
+
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            font-size: 13px;
+        }
+
+        .subscription-card ol li {
+            padding-left: 5px;
+
+            margin-bottom: 4px;
+        }
+
+        .subscribe-btn {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            padding: 11px;
+
+            border-radius: 25px;
+
+            background: var(--rose);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: .3s;
+        }
+
+        .subscribe-btn:hover {
+            background: #a45f72;
+        }
+
+        /* =====================================================
+           PROFILE
+           ===================================================== */
+
+        #profile {
+            background: var(--cream);
+        }
+
+        .profile-container {
+            max-width: 950px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 35px;
+
+            padding: 35px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 25px;
+
+            box-shadow: 0 10px 30px rgba(70,50,50,.06);
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 5px solid var(--rose-pale);
+
+            flex-shrink: 0;
+        }
+
+        .profile-text h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 32px;
+
+            margin-bottom: 5px;
+        }
+
+        .profile-text h2 span {
+            color: var(--rose);
+        }
+
+        .profile-text .university {
+            color: var(--sage);
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+        }
+
+        .profile-text p {
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           CONTACT
+           ===================================================== */
+
+        #contact {
+            background: #F2E9E2;
+        }
+
+        .contact-grid {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,.8);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        .contact-card .icon {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            font-family: "Playfair Display", serif;
+
+            margin-bottom: 7px;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+
+            font-size: 13px;
+        }
+
+        .contact-card a {
+            color: var(--rose);
+
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+            padding: 25px;
+
+            text-align: center;
+
+            background: var(--dark);
+
+            color: #EADFE0;
+
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           MODAL
+           ===================================================== */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            padding: 50px 20px;
+
+            background: rgba(48,42,44,.65);
+
+            backdrop-filter: blur(8px);
+
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            max-width: 800px;
+
+            margin: auto;
+
+            background: var(--cream);
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            position: relative;
+
+            box-shadow: 0 25px 60px rgba(0,0,0,.25);
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 12px;
+
+            font-size: 30px;
+
+            color: var(--gray);
+
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--rose);
+        }
+
+        .modal-content h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 32px;
+
+            color: var(--rose);
+
+            margin-bottom: 10px;
+        }
+
+        .modal-content .modal-genre {
+            color: var(--sage);
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-content video {
+            width: 100%;
+
+            max-height: 450px;
+
+            background: black;
+
+            border-radius: 14px;
+        }
+
+        .no-trailer {
+            background: var(--rose-pale);
+
+            color: var(--gray);
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            text-align: center;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .movie-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+        }
+
+        @media (max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 52px;
+            }
+
+            .movie-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .genre-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trailer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subscription-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 43px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stat {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 10px;
+            }
+
+            .stat:last-child {
+                border-bottom: none;
+            }
+
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .movie-card img {
+                height: 230px;
+            }
+
+            .trailer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .genre-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-heading h2 {
+                font-size: 34px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
+<nav>
+
+    <div class="logo">
+        🎬 DAVINA <span>CINEMA</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Beranda</a>
+        </li>
+
+        <li>
+            <a href="#movies">Movies</a>
+        </li>
+
+        <li>
+            <a href="#genre-section">Genre</a>
+        </li>
+
+        <li>
+            <a href="#trailers">Trailers</a>
+        </li>
+
+        <li>
+            <a href="#subscription">Subscription</a>
+        </li>
+
+        <li>
+            <a href="#profile">Profile</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================================================
+     HOME
+     ========================================================= -->
+
+<section id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            Welcome To
+        </div>
+
+        <h1>
+            Davina <span>Cinema</span>
+        </h1>
+
+        <div class="hero-subtitle">
+            More Stories · More Emotions · More Inspiration
+        </div>
+
+        <p>
+            Temukan berbagai film dan series pilihan dari berbagai
+            genre. Jelajahi dunia cerita yang seru, menginspirasi,
+            dan tak terlupakan dalam satu website.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#movies" class="hero-btn primary">
+                ✦ Explore Movies
+            </a>
+
+            <a href="#trailers" class="hero-btn secondary">
+                ▶ Lihat Trailers
+            </a>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+            <div class="stat">
+
+                <strong>37</strong>
+
+                <span>
+                    Movies & Series
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>8</strong>
+
+                <span>
+                    Genres
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>6</strong>
+
+                <span>
+                    Trailers
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>∞</strong>
+
+                <span>
+                    Stories
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MOVIES
+     ========================================================= -->
+
+<section id="movies">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Movie Collection
+        </div>
+
+        <h2>Popular Movies</h2>
+
+        <p>
+            Jelajahi koleksi film dan series pilihan Davina Cinema.
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari film atau series..."
+            onkeyup="searchMovies()"
+        >
+
+    </div>
+
+
+    <div class="filter-buttons">
+
+        <button
+            class="active"
+            onclick="filterMovies('all', this)"
+        >
+            Semua
+        </button>
+
+        <button onclick="filterMovies('Drama', this)">
+            Drama
+        </button>
+
+        <button onclick="filterMovies('Action', this)">
+            Action
+        </button>
+
+        <button onclick="filterMovies('Romance', this)">
+            Romance
+        </button>
+
+        <button onclick="filterMovies('Fantasy', this)">
+            Fantasy
+        </button>
+
+        <button onclick="filterMovies('Animation', this)">
+            Animation
+        </button>
+
+        <button onclick="filterMovies('Thriller', this)">
+            Thriller
+        </button>
+
+        <button onclick="filterMovies('Comedy', this)">
+            Comedy
+        </button>
+
+        <button onclick="filterMovies('Sci-Fi', this)">
+            Sci-Fi
+        </button>
+
+    </div>
+
+
+    <div
+        class="movie-grid"
+        id="movieGrid"
+    ></div>
+
+</section>
+
+
+<!-- =========================================================
+     GENRE
+     ========================================================= -->
+
+<section id="genre-section">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Explore
+        </div>
+
+        <h2>Movie Genres</h2>
+
+        <p>
+            Pilih genre favoritmu dan temukan cerita yang sesuai.
+        </p>
+
+    </div>
+
+
+    <div class="genre-container">
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                🎬
+            </div>
+
+            <h3>Action</h3>
+
+            <p>
+                Aksi dan petualangan.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                🏔
+            </div>
+
+            <h3>Adventure</h3>
+
+            <p>
+                Perjalanan penuh cerita.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                🌿
+            </div>
+
+            <h3>Animation</h3>
+
+            <p>
+                Dunia animasi yang menarik.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                🎭
+            </div>
+
+            <h3>Comedy</h3>
+
+            <p>
+                Cerita ringan dan menghibur.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                ♡
+            </div>
+
+            <h3>Drama</h3>
+
+            <p>
+                Cerita kehidupan dan konflik.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                ✦
+            </div>
+
+            <h3>Fantasy</h3>
+
+            <p>
+                Dunia imajinasi dan keajaiban.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                ♡
+            </div>
+
+            <h3>Romance</h3>
+
+            <p>
+                Kisah cinta dan hubungan.
+            </p>
+
+        </div>
+
+
+        <div class="genre-card">
+
+            <div class="genre-icon">
+                ◉
+            </div>
+
+            <h3>Thriller</h3>
+
+            <p>
+                Misteri dan ketegangan.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TRAILERS
+     ========================================================= -->
+
+<section id="trailers">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Watch Now
+        </div>
+
+        <h2>Movie Trailers</h2>
+
+        <p>
+            Saksikan trailer dari beberapa film pilihan.
+        </p>
+
+    </div>
+
+
+    <div class="trailer-grid">
+
+
+        <!-- TRAILER 1 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="24.jpg.avif"
+            >
+
+                <source
+                    src="trailer the hunger games.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                The Hunger Games
+            </h3>
+
+            <p>
+                Action · Drama
+            </p>
+
+        </div>
+
+
+        <!-- TRAILER 2 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="05.jpg.webp"
+            >
+
+                <source
+                    src="trailer anne with an e.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                Anne with an E
+            </h3>
+
+            <p>
+                Drama
+            </p>
+
+        </div>
+
+
+        <!-- TRAILER 3 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="04.jpg.jpg"
+            >
+
+                <source
+                    src="trailer a shop for killer.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                A Shop for Killers
+            </h3>
+
+            <p>
+                Action · Thriller
+            </p>
+
+        </div>
+
+
+        <!-- TRAILER 4 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="35.jpg.avif"
+            >
+
+                <source
+                    src="trailer whisper of the heart.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                Whisper of the Heart
+            </h3>
+
+            <p>
+                Animation · Romance
+            </p>
+
+        </div>
+
+
+        <!-- TRAILER 5 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="20.jpg.jpg"
+            >
+
+                <source
+                    src="trailer queen charlotte.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                Queen Charlotte
+            </h3>
+
+            <p>
+                Drama · Romance
+            </p>
+
+        </div>
+
+
+        <!-- TRAILER 6 -->
+
+        <div class="trailer-card">
+
+            <video
+                controls
+                poster="22.jpg.jpg"
+            >
+
+                <source
+                    src="trailer stranger things.mp4"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+            <h3>
+                Stranger Things
+            </h3>
+
+            <p>
+                Sci-Fi · Thriller
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SUBSCRIPTION
+     ========================================================= -->
+
+<section id="subscription">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Choose Your Plan
+        </div>
+
+        <h2>Paket Berlangganan</h2>
+
+        <p>
+            Pilih paket yang sesuai dengan kebutuhan menonton kamu.
+        </p>
+
+    </div>
+
+
+    <div class="subscription-container">
+
+
+        <!-- BASIC -->
+
+        <div class="subscription-card">
+
+            <h3>Basic</h3>
+
+            <div class="price">
+                Rp25.000
+                <span>/ Bulan</span>
+            </div>
+
+
+            <!-- ORDERED LIST SESUAI PERINTAH DOSEN -->
+
+            <ol>
+
+                <li>
+                    Akses film standar
+                </li>
+
+                <li>
+                    Kualitas video hingga 720p
+                </li>
+
+                <li>
+                    Dapat digunakan pada 1 perangkat
+                </li>
+
+                <li>
+                    Akses katalog film
+                </li>
+
+            </ol>
+
+
+            <a
+                href="#contact"
+                class="subscribe-btn"
+            >
+                Berlangganan
+            </a>
+
+        </div>
+
+
+        <!-- STANDARD -->
+
+        <div class="subscription-card popular">
+
+            <div class="popular-label">
+                PALING POPULER
+            </div>
+
+            <h3>Standard</h3>
+
+            <div class="price">
+                Rp45.000
+                <span>/ Bulan</span>
+            </div>
+
+
+            <!-- ORDERED LIST -->
+
+            <ol>
+
+                <li>
+                    Akses seluruh katalog film
+                </li>
+
+                <li>
+                    Kualitas video hingga 1080p
+                </li>
+
+                <li>
+                    Dapat digunakan pada 2 perangkat
+                </li>
+
+                <li>
+                    Tanpa iklan
+                </li>
+
+                <li>
+                    Dapat menonton trailer
+                </li>
+
+            </ol>
+
+
+            <a
+                href="#contact"
+                class="subscribe-btn"
+            >
+                Berlangganan
+            </a>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+
+        <div class="subscription-card">
+
+            <h3>Premium</h3>
+
+            <div class="price">
+                Rp65.000
+                <span>/ Bulan</span>
+            </div>
+
+
+            <!-- ORDERED LIST -->
+
+            <ol>
+
+                <li>
+                    Akses seluruh katalog film
+                </li>
+
+                <li>
+                    Kualitas video hingga 4K
+                </li>
+
+                <li>
+                    Dapat digunakan pada 4 perangkat
+                </li>
+
+                <li>
+                    Tanpa iklan
+                </li>
+
+                <li>
+                    Akses konten premium
+                </li>
+
+                <li>
+                    Prioritas film terbaru
+                </li>
+
+            </ol>
+
+
+            <a
+                href="#contact"
+                class="subscribe-btn"
+            >
+                Berlangganan
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROFILE
+     ========================================================= -->
+
+<section id="profile">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            About Me
+        </div>
+
+        <h2>Profile</h2>
+
+    </div>
+
+
+    <div class="profile-container">
+
+
+        <!--
+        Kalau kamu punya foto sendiri,
+        ganti "profile.jpg" dengan nama file fotomu.
+        -->
+
+        <img
+            src="profile.jpg"
+            class="profile-photo"
+            alt="Davina Auralia"
+            onerror="this.style.display='none';"
+        >
+
+
+        <div class="profile-text">
+
+            <h2>
+                Davina <span>Auralia</span>
+            </h2>
+
+            <div class="university">
+                Mahasiswa Universitas Pamulang
+            </div>
+
+            <p>
+                Website Davina Cinema merupakan project website
+                katalog film yang dibuat sebagai bagian dari
+                pembelajaran Pemrograman Web.
+            </p>
+
+            <br>
+
+            <p>
+                Website ini berisi berbagai film dan series favorit
+                yang dapat dijelajahi berdasarkan judul maupun genre.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+
+<section id="contact">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Get In Touch
+        </div>
+
+        <h2>Contact</h2>
+
+        <p>
+            Informasi kontak pemilik website.
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ♡
+            </div>
+
+            <h3>
+                Nama
+            </h3>
+
+            <p>
+                Davina Auralia
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ✦
+            </div>
+
+            <h3>
+                Universitas
+            </h3>
+
+            <p>
+                Universitas Pamulang
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ✉
+            </div>
+
+            <h3>
+                Email
+            </h3>
+
+            <p>
+                <a href="mailto:davinauralia05@gmail.com">
+                    davinauralia05@gmail.com
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <p>
+        © 2026 Davina Cinema · Davina Auralia
+    </p>
+
+</footer>
+
+
+<!-- =========================================================
+     MOVIE DETAIL MODAL
+     ========================================================= -->
+
+<div
+    class="modal"
+    id="movieModal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeModal()"
+        >
+            &times;
+        </span>
+
+
+        <h2 id="modalTitle"></h2>
+
+        <p
+            class="modal-genre"
+            id="modalGenre"
+        ></p>
+
+        <p id="modalDescription"></p>
+
+        <div id="modalTrailer"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   MOVIE DATA - 37 FILM
+   ========================================================= */
+
+const movies = [
+
+    {
+        title: "1 Kakak 7 Keponakan",
+        image: "01.jpg.webp",
+        genre: "Drama",
+        description:
+        "Kisah keluarga dengan berbagai permasalahan dan hubungan antar anggota keluarga."
+    },
+
+    {
+        title: "5 CM",
+        image: "02.jpg.webp",
+        genre: "Drama",
+        description:
+        "Kisah persahabatan dan perjalanan lima sahabat dalam mencapai impian mereka."
+    },
+
+    {
+        title: "A Hundred Memories",
+        image: "03.jpg.webp",
+        genre: "Drama",
+        description:
+        "Cerita mengenai kehidupan, persahabatan, kenangan dan hubungan antar karakter."
+    },
+
+    {
+        title: "A Shop for Killers",
+        image: "04.jpg.jpg",
+        genre: "Action",
+        description:
+        "Seorang perempuan harus menghadapi berbagai bahaya setelah mewarisi toko misterius milik pamannya."
+    },
+
+    {
+        title: "Anne with an E",
+        image: "05.jpg.webp",
+        genre: "Drama",
+        description:
+        "Kisah Anne Shirley, seorang gadis yatim piatu yang menemukan keluarga dan rumah baru."
+    },
+
+    {
+        title: "Ballerina",
+        image: "06.jpg.webp",
+        genre: "Action",
+        description:
+        "Kisah seorang perempuan yang berusaha membalas dendam setelah kehilangan sahabatnya."
+    },
+
+    {
+        title: "Bloodhounds",
+        image: "07.jpg.webp",
+        genre: "Action",
+        description:
+        "Dua petinju muda bekerja sama menghadapi dunia kejahatan dan rentenir."
+    },
+
+    {
+        title: "Cold Eyes",
+        image: "08.jpg.jpg",
+        genre: "Action",
+        description:
+        "Tim pengawas khusus berusaha melacak dan menangkap kelompok kriminal."
+    },
+
+    {
+        title: "Descendants 1",
+        image: "09.jpg.jpg",
+        genre: "Fantasy",
+        description:
+        "Anak-anak dari para penjahat terkenal mendapatkan kesempatan untuk hidup di dunia yang berbeda."
+    },
+
+    {
+        title: "Descendants 2",
+        image: "10.jpg.jpg",
+        genre: "Fantasy",
+        description:
+        "Petualangan kembali berlanjut dengan berbagai konflik dan persahabatan."
+    },
+
+    {
+        title: "Descendants 3",
+        image: "11.jpg.jpg",
+        genre: "Fantasy",
+        description:
+        "Para karakter menghadapi tantangan baru yang menguji persahabatan mereka."
+    },
+
+    {
+        title: "From Up on Poppy Hill",
+        image: "12.jpg.webp",
+        genre: "Animation",
+        description:
+        "Kisah kehidupan remaja dan persahabatan yang berlatar di Yokohama."
+    },
+
+    {
+        title: "Ghost in the Shell",
+        image: "13.jpg.webp",
+        genre: "Sci-Fi",
+        description:
+        "Cerita futuristik mengenai teknologi, identitas dan manusia."
+    },
+
+    {
+        title: "Happiness",
+        image: "14.jpg.jpg",
+        genre: "Thriller",
+        description:
+        "Sekelompok penghuni apartemen menghadapi situasi berbahaya akibat wabah."
+    },
+
+    {
+        title: "Kiki's Delivery Service",
+        image: "15.jpg.webp",
+        genre: "Animation",
+        description:
+        "Kisah seorang penyihir muda yang belajar mandiri di kota baru."
+    },
+
+    {
+        title: "Law School",
+        image: "16.jpg.jpg",
+        genre: "Drama",
+        description:
+        "Para mahasiswa hukum menghadapi berbagai kasus dan misteri di lingkungan kampus."
+    },
+
+    {
+        title: "My Name",
+        image: "17.jpg.webp",
+        genre: "Action",
+        description:
+        "Seorang perempuan menyusup ke kepolisian untuk mencari kebenaran mengenai kematian ayahnya."
+    },
+
+    {
+        title: "No Tail to Tell",
+        image: "18.jpg.jpg",
+        genre: "Romance",
+        description:
+        "Kisah hubungan dan perasaan antara karakter dengan latar cerita yang unik."
+    },
+
+    {
+        title: "Pretty Lethal",
+        image: "19.jpg.webp",
+        genre: "Action",
+        description:
+        "Cerita penuh aksi dan konflik dengan karakter utama yang berusaha menghadapi berbagai tantangan."
+    },
+
+    {
+        title: "Queen Charlotte",
+        image: "20.jpg.jpg",
+        genre: "Romance",
+        description:
+        "Kisah cinta dan kehidupan Queen Charlotte sebelum menjadi sosok penting di kerajaan."
+    },
+
+    {
+        title: "Spooky in Love",
+        image: "21.jpg.jpg",
+        genre: "Romance",
+        description:
+        "Kisah romantis dengan sentuhan komedi dan unsur supernatural."
+    },
+
+    {
+        title: "Stranger Things",
+        image: "22.jpg.jpg",
+        genre: "Sci-Fi",
+        description:
+        "Sekelompok anak menghadapi kejadian misterius dan dunia lain di kota mereka."
+    },
+
+    {
+        title: "Sweet Home",
+        image: "23.jpg.jpg",
+        genre: "Thriller",
+        description:
+        "Para penghuni apartemen berusaha bertahan hidup dari ancaman monster."
+    },
+
+    {
+        title: "The Hunger Games 1",
+        image: "24.jpg.avif",
+        genre: "Action",
+        description:
+        "Katniss Everdeen mengikuti permainan berbahaya demi menyelamatkan keluarganya."
+    },
+
+    {
+        title: "The Hunger Games 2",
+        image: "25.jpg.webp",
+        genre: "Action",
+        description:
+        "Katniss kembali menghadapi konflik setelah kemenangan dalam Hunger Games."
+    },
+
+    {
+        title: "The Hunger Games 3",
+        image: "26.jpg.jpg",
+        genre: "Action",
+        description:
+        "Perlawanan terhadap pemerintahan semakin berkembang dan Katniss menjadi simbol pemberontakan."
+    },
+
+    {
+        title: "The Hunger Games 4",
+        image: "27.jpg.webp",
+        genre: "Action",
+        description:
+        "Konflik antara pihak pemberontak dan pemerintahan semakin memuncak."
+    },
+
+    {
+        title: "The Hunger Games 5",
+        image: "28.jpg.avif",
+        genre: "Drama",
+        description:
+        "Kisah yang membawa penonton melihat latar belakang dunia Hunger Games."
+    },
+
+    {
+        title: "The Uncanny Counter",
+        image: "29.jpg.webp",
+        genre: "Fantasy",
+        description:
+        "Sekelompok pemburu iblis dengan kekuatan khusus menjalankan misi melawan roh jahat."
+    },
+
+    {
+        title: "The Wonderfools",
+        image: "30.jpg.jpg",
+        genre: "Comedy",
+        description:
+        "Sekelompok orang dengan kemampuan unik terlibat dalam berbagai kejadian."
+    },
+
+    {
+        title: "Tinker Bell and the Neverbeast",
+        image: "31.jpg.jpg",
+        genre: "Animation",
+        description:
+        "Tinker Bell dan teman-temannya bertemu dengan makhluk misterius yang membutuhkan bantuan."
+    },
+
+    {
+        title: "To All the Boys I Loved Before 1",
+        image: "32.jpg.avif",
+        genre: "Romance",
+        description:
+        "Surat cinta rahasia seorang gadis secara tidak sengaja diketahui oleh orang-orang yang ia sukai."
+    },
+
+    {
+        title: "To All the Boys I Loved Before 2",
+        image: "33.jpg.jpg",
+        genre: "Romance",
+        description:
+        "Hubungan Lara Jean menghadapi tantangan ketika masa lalu kembali muncul."
+    },
+
+    {
+        title: "To All the Boys I Loved Before 3",
+        image: "34.jpg.jpg",
+        genre: "Romance",
+        description:
+        "Lara Jean menghadapi pilihan besar mengenai masa depan dan hubungannya."
+    },
+
+    {
+        title: "Whisper of the Heart",
+        image: "35.jpg.avif",
+        genre: "Animation",
+        description:
+        "Kisah seorang gadis yang menemukan kecintaannya pada menulis dan mengejar impiannya."
+    },
+
+    {
+        title: "XO, Kitty",
+        image: "36.jpg.avif",
+        genre: "Romance",
+        description:
+        "Kitty melanjutkan perjalanan hidupnya dan menghadapi berbagai pengalaman baru."
+    },
+
+    {
+        title: "Youth of May",
+        image: "37.jpg.webp",
+        genre: "Drama",
+        description:
+        "Kisah cinta dan kehidupan dua orang muda di tengah situasi sosial yang penuh konflik."
+    }
+
+];
+
+
+/* =========================================================
+   TRAILER DATA
+   ========================================================= */
+
+const trailers = {
+
+    "The Hunger Games 1":
+        "trailer the hunger games.mp4",
+
+    "Anne with an E":
+        "trailer anne with an e.mp4",
+
+    "A Shop for Killers":
+        "trailer a shop for killer.mp4",
+
+    "Whisper of the Heart":
+        "trailer whisper of the heart.mp4",
+
+    "Queen Charlotte":
+        "trailer queen charlotte.mp4",
+
+    "Stranger Things":
+        "trailer stranger things.mp4"
+
+};
+
+
+/* =========================================================
+   DISPLAY MOVIES
+   ========================================================= */
+
+const movieGrid =
+    document.getElementById("movieGrid");
+
+
+function displayMovies(movieList) {
+
+    movieGrid.innerHTML = "";
+
+
+    if (movieList.length === 0) {
+
+        movieGrid.innerHTML = `
+
+            <p
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    color:#71696B;
+                    padding:40px;
+                "
+            >
+                Film tidak ditemukan.
+            </p>
+
+        `;
+
+        return;
+    }
+
+
+    movieList.forEach(movie => {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "movie-card";
+
+
+        card.onclick =
+            function() {
+
+                openModal(movie);
+
+            };
+
+
+        card.innerHTML = `
+
+            <img
+                src="${movie.image}"
+                alt="${movie.title}"
+            >
+
+            <div class="movie-info">
+
+                <h3>
+                    ${movie.title}
+                </h3>
+
+                <p>
+                    ${movie.genre}
+                </p>
+
+            </div>
+
+        `;
+
+
+        movieGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* Tampilkan 37 film */
+
+displayMovies(movies);
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function searchMovies() {
+
+    const keyword =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const result =
+        movies.filter(movie =>
+
+            movie.title
+            .toLowerCase()
+            .includes(keyword)
+
+        );
+
+
+    displayMovies(result);
+
+}
+
+
+/* =========================================================
+   FILTER GENRE
+   ========================================================= */
+
+function filterMovies(genre, button) {
+
+    document
+        .querySelectorAll(".filter-buttons button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    if (genre === "all") {
+
+        displayMovies(movies);
+
+        return;
+
+    }
+
+
+    const result =
+        movies.filter(movie =>
+
+            movie.genre === genre
+
+        );
+
+
+    displayMovies(result);
+
+}
+
+
+/* =========================================================
+   OPEN MOVIE MODAL
+   ========================================================= */
+
+function openModal(movie) {
+
+    const modal =
+        document.getElementById("movieModal");
+
+
+    modal.style.display =
+        "block";
+
+
+    document.getElementById("modalTitle")
+        .textContent =
+        movie.title;
+
+
+    document.getElementById("modalGenre")
+        .textContent =
+        "Genre: " + movie.genre;
+
+
+    document.getElementById("modalDescription")
+        .textContent =
+        movie.description;
+
+
+    const trailerContainer =
+        document.getElementById("modalTrailer");
+
+
+    if (trailers[movie.title]) {
+
+        trailerContainer.innerHTML = `
+
+            <video controls>
+
+                <source
+                    src="${trailers[movie.title]}"
+                    type="video/mp4"
+                >
+
+                Browser kamu tidak mendukung video.
+
+            </video>
+
+        `;
+
+    } else {
+
+        trailerContainer.innerHTML = `
+
+            <div class="no-trailer">
+
+                Trailer belum tersedia
+                untuk film ini.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+   ========================================================= */
+
+function closeModal() {
+
+    const modal =
+        document.getElementById("movieModal");
+
+
+    modal.style.display =
+        "none";
+
+
+    document.getElementById("modalTrailer")
+        .innerHTML =
+        "";
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+window.onclick =
+    function(event) {
+
+        const modal =
+            document.getElementById("movieModal");
+
+
+        if (event.target === modal) {
+
+            closeModal();
+
+        }
+
+    };
+
+
+</script>
+
+</body>
+</html>
