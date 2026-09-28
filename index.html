@@ -968,6 +968,97 @@
            RESPONSIVE
            ===================================================== */
 
+        /* =====================================================
+           RECOMMENDATION TABLE
+           ===================================================== */
+
+        .recommendation-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .recommendation-section h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .recommendation-section p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .recommendation-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 600px;
+        }
+
+        .recommendation-table caption {
+            text-align: left;
+            padding: 15px 18px;
+            background: var(--rose-pale);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .recommendation-table th {
+            background: var(--sage-light);
+            color: var(--dark);
+            padding: 12px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .recommendation-table td {
+            padding: 10px 12px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .recommendation-table img {
+            width: 55px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+
+        .recommendation-row {
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .recommendation-row:hover {
+            background: var(--cream);
+        }
+
+        .recommendation-row td:nth-child(3) {
+            font-weight: 700;
+            color: var(--dark);
+            text-align: left;
+        }
+
+        .recommendation-row td:last-child {
+            color: var(--rose);
+            font-weight: 700;
+        }
+
+
         @media (max-width: 1100px) {
 
             .movie-grid {
@@ -2010,6 +2101,41 @@
 
         <p id="modalDescription"></p>
 
+        <div class="recommendation-section">
+
+            <h3>✨ Film Serupa Untukmu</h3>
+
+            <p id="recommendationSubtitle">
+                Rekomendasi berdasarkan genre film yang dipilih.
+            </p>
+
+            <div class="table-wrap">
+
+                <table class="recommendation-table">
+
+                    <caption>
+                        Daftar Film Rekomendasi
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Poster</th>
+                            <th>Judul Film</th>
+                            <th>Genre</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recommendationBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
         <div id="modalTrailer"></div>
 
     </div>
@@ -2034,6 +2160,7 @@ const movies = [
         title: "1 Kakak 7 Keponakan",
         image: "01.jpg.webp",
         genre: "Drama",
+        rating: 8.2,
         description:
         "Kisah keluarga dengan berbagai permasalahan dan hubungan antar anggota keluarga."
     },
@@ -2042,6 +2169,7 @@ const movies = [
         title: "5 CM",
         image: "02.jpg.webp",
         genre: "Drama",
+        rating: 7.8,
         description:
         "Kisah persahabatan dan perjalanan lima sahabat dalam mencapai impian mereka."
     },
@@ -2050,6 +2178,7 @@ const movies = [
         title: "A Hundred Memories",
         image: "03.jpg.webp",
         genre: "Drama",
+        rating: 8.1,
         description:
         "Cerita mengenai kehidupan, persahabatan, kenangan dan hubungan antar karakter."
     },
@@ -2058,6 +2187,7 @@ const movies = [
         title: "A Shop for Killers",
         image: "04.jpg.jpg",
         genre: "Action",
+        rating: 8.5,
         description:
         "Seorang perempuan harus menghadapi berbagai bahaya setelah mewarisi toko misterius milik pamannya."
     },
@@ -2066,6 +2196,7 @@ const movies = [
         title: "Anne with an E",
         image: "05.jpg.webp",
         genre: "Drama",
+        rating: 8.6,
         description:
         "Kisah Anne Shirley, seorang gadis yatim piatu yang menemukan keluarga dan rumah baru."
     },
@@ -2074,6 +2205,7 @@ const movies = [
         title: "Ballerina",
         image: "06.jpg.webp",
         genre: "Action",
+        rating: 6.8,
         description:
         "Kisah seorang perempuan yang berusaha membalas dendam setelah kehilangan sahabatnya."
     },
@@ -2082,6 +2214,7 @@ const movies = [
         title: "Bloodhounds",
         image: "07.jpg.webp",
         genre: "Action",
+        rating: 8.1,
         description:
         "Dua petinju muda bekerja sama menghadapi dunia kejahatan dan rentenir."
     },
@@ -2090,6 +2223,7 @@ const movies = [
         title: "Cold Eyes",
         image: "08.jpg.jpg",
         genre: "Action",
+        rating: 7.6,
         description:
         "Tim pengawas khusus berusaha melacak dan menangkap kelompok kriminal."
     },
@@ -2098,6 +2232,7 @@ const movies = [
         title: "Descendants 1",
         image: "09.jpg.jpg",
         genre: "Fantasy",
+        rating: 6.9,
         description:
         "Anak-anak dari para penjahat terkenal mendapatkan kesempatan untuk hidup di dunia yang berbeda."
     },
@@ -2106,6 +2241,7 @@ const movies = [
         title: "Descendants 2",
         image: "10.jpg.jpg",
         genre: "Fantasy",
+        rating: 6.8,
         description:
         "Petualangan kembali berlanjut dengan berbagai konflik dan persahabatan."
     },
@@ -2114,6 +2250,7 @@ const movies = [
         title: "Descendants 3",
         image: "11.jpg.jpg",
         genre: "Fantasy",
+        rating: 6.7,
         description:
         "Para karakter menghadapi tantangan baru yang menguji persahabatan mereka."
     },
@@ -2122,6 +2259,7 @@ const movies = [
         title: "From Up on Poppy Hill",
         image: "12.jpg.webp",
         genre: "Animation",
+        rating: 7.4,
         description:
         "Kisah kehidupan remaja dan persahabatan yang berlatar di Yokohama."
     },
@@ -2130,6 +2268,7 @@ const movies = [
         title: "Ghost in the Shell",
         image: "13.jpg.webp",
         genre: "Sci-Fi",
+        rating: 7.9,
         description:
         "Cerita futuristik mengenai teknologi, identitas dan manusia."
     },
@@ -2138,6 +2277,7 @@ const movies = [
         title: "Happiness",
         image: "14.jpg.jpg",
         genre: "Thriller",
+        rating: 7.8,
         description:
         "Sekelompok penghuni apartemen menghadapi situasi berbahaya akibat wabah."
     },
@@ -2146,6 +2286,7 @@ const movies = [
         title: "Kiki's Delivery Service",
         image: "15.jpg.webp",
         genre: "Animation",
+        rating: 8.2,
         description:
         "Kisah seorang penyihir muda yang belajar mandiri di kota baru."
     },
@@ -2154,6 +2295,7 @@ const movies = [
         title: "Law School",
         image: "16.jpg.jpg",
         genre: "Drama",
+        rating: 8.0,
         description:
         "Para mahasiswa hukum menghadapi berbagai kasus dan misteri di lingkungan kampus."
     },
@@ -2162,6 +2304,7 @@ const movies = [
         title: "My Name",
         image: "17.jpg.webp",
         genre: "Action",
+        rating: 8.7,
         description:
         "Seorang perempuan menyusup ke kepolisian untuk mencari kebenaran mengenai kematian ayahnya."
     },
@@ -2170,6 +2313,7 @@ const movies = [
         title: "No Tail to Tell",
         image: "18.jpg.jpg",
         genre: "Romance",
+        rating: 7.5,
         description:
         "Kisah hubungan dan perasaan antara karakter dengan latar cerita yang unik."
     },
@@ -2178,6 +2322,7 @@ const movies = [
         title: "Pretty Lethal",
         image: "19.jpg.webp",
         genre: "Action",
+        rating: 7.2,
         description:
         "Cerita penuh aksi dan konflik dengan karakter utama yang berusaha menghadapi berbagai tantangan."
     },
@@ -2186,6 +2331,7 @@ const movies = [
         title: "Queen Charlotte",
         image: "20.jpg.jpg",
         genre: "Romance",
+        rating: 7.8,
         description:
         "Kisah cinta dan kehidupan Queen Charlotte sebelum menjadi sosok penting di kerajaan."
     },
@@ -2194,6 +2340,7 @@ const movies = [
         title: "Spooky in Love",
         image: "21.jpg.jpg",
         genre: "Romance",
+        rating: 7.3,
         description:
         "Kisah romantis dengan sentuhan komedi dan unsur supernatural."
     },
@@ -2202,6 +2349,7 @@ const movies = [
         title: "Stranger Things",
         image: "22.jpg.jpg",
         genre: "Sci-Fi",
+        rating: 8.6,
         description:
         "Sekelompok anak menghadapi kejadian misterius dan dunia lain di kota mereka."
     },
@@ -2210,6 +2358,7 @@ const movies = [
         title: "Sweet Home",
         image: "23.jpg.jpg",
         genre: "Thriller",
+        rating: 7.3,
         description:
         "Para penghuni apartemen berusaha bertahan hidup dari ancaman monster."
     },
@@ -2218,6 +2367,7 @@ const movies = [
         title: "The Hunger Games 1",
         image: "24.jpg.avif",
         genre: "Action",
+        rating: 7.2,
         description:
         "Katniss Everdeen mengikuti permainan berbahaya demi menyelamatkan keluarganya."
     },
@@ -2226,6 +2376,7 @@ const movies = [
         title: "The Hunger Games 2",
         image: "25.jpg.webp",
         genre: "Action",
+        rating: 7.5,
         description:
         "Katniss kembali menghadapi konflik setelah kemenangan dalam Hunger Games."
     },
@@ -2234,6 +2385,7 @@ const movies = [
         title: "The Hunger Games 3",
         image: "26.jpg.jpg",
         genre: "Action",
+        rating: 6.6,
         description:
         "Perlawanan terhadap pemerintahan semakin berkembang dan Katniss menjadi simbol pemberontakan."
     },
@@ -2242,6 +2394,7 @@ const movies = [
         title: "The Hunger Games 4",
         image: "27.jpg.webp",
         genre: "Action",
+        rating: 6.5,
         description:
         "Konflik antara pihak pemberontak dan pemerintahan semakin memuncak."
     },
@@ -2250,6 +2403,7 @@ const movies = [
         title: "The Hunger Games 5",
         image: "28.jpg.avif",
         genre: "Drama",
+        rating: 6.7,
         description:
         "Kisah yang membawa penonton melihat latar belakang dunia Hunger Games."
     },
@@ -2258,6 +2412,7 @@ const movies = [
         title: "The Uncanny Counter",
         image: "29.jpg.webp",
         genre: "Fantasy",
+        rating: 8.0,
         description:
         "Sekelompok pemburu iblis dengan kekuatan khusus menjalankan misi melawan roh jahat."
     },
@@ -2266,6 +2421,7 @@ const movies = [
         title: "The Wonderfools",
         image: "30.jpg.jpg",
         genre: "Comedy",
+        rating: 7.4,
         description:
         "Sekelompok orang dengan kemampuan unik terlibat dalam berbagai kejadian."
     },
@@ -2274,6 +2430,7 @@ const movies = [
         title: "Tinker Bell and the Neverbeast",
         image: "31.jpg.jpg",
         genre: "Animation",
+        rating: 6.8,
         description:
         "Tinker Bell dan teman-temannya bertemu dengan makhluk misterius yang membutuhkan bantuan."
     },
@@ -2282,6 +2439,7 @@ const movies = [
         title: "To All the Boys I Loved Before 1",
         image: "32.jpg.avif",
         genre: "Romance",
+        rating: 7.0,
         description:
         "Surat cinta rahasia seorang gadis secara tidak sengaja diketahui oleh orang-orang yang ia sukai."
     },
@@ -2290,6 +2448,7 @@ const movies = [
         title: "To All the Boys I Loved Before 2",
         image: "33.jpg.jpg",
         genre: "Romance",
+        rating: 6.3,
         description:
         "Hubungan Lara Jean menghadapi tantangan ketika masa lalu kembali muncul."
     },
@@ -2298,6 +2457,7 @@ const movies = [
         title: "To All the Boys I Loved Before 3",
         image: "34.jpg.jpg",
         genre: "Romance",
+        rating: 6.3,
         description:
         "Lara Jean menghadapi pilihan besar mengenai masa depan dan hubungannya."
     },
@@ -2306,6 +2466,7 @@ const movies = [
         title: "Whisper of the Heart",
         image: "35.jpg.avif",
         genre: "Animation",
+        rating: 8.0,
         description:
         "Kisah seorang gadis yang menemukan kecintaannya pada menulis dan mengejar impiannya."
     },
@@ -2314,6 +2475,7 @@ const movies = [
         title: "XO, Kitty",
         image: "36.jpg.avif",
         genre: "Romance",
+        rating: 7.1,
         description:
         "Kitty melanjutkan perjalanan hidupnya dan menghadapi berbagai pengalaman baru."
     },
@@ -2322,6 +2484,7 @@ const movies = [
         title: "Youth of May",
         image: "37.jpg.webp",
         genre: "Drama",
+        rating: 8.4,
         description:
         "Kisah cinta dan kehidupan dua orang muda di tengah situasi sosial yang penuh konflik."
     }
@@ -2574,6 +2737,102 @@ function openModal(movie) {
         `;
 
     }
+
+
+    showRecommendations(movie);
+
+}
+
+
+function showRecommendations(selectedMovie) {
+
+    const body =
+        document.getElementById("recommendationBody");
+
+    const subtitle =
+        document.getElementById("recommendationSubtitle");
+
+    body.innerHTML = "";
+
+    subtitle.textContent =
+        "Film dengan genre " +
+        selectedMovie.genre +
+        " yang mungkin kamu suka.";
+
+    const recommendations =
+        movies
+            .filter(movie =>
+                movie.genre === selectedMovie.genre &&
+                movie.title !== selectedMovie.title
+            )
+            .sort((a, b) =>
+                b.rating - a.rating
+            )
+            .slice(0, 5);
+
+    if (recommendations.length === 0) {
+
+        body.innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+                    Belum ada film serupa.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+    }
+
+    recommendations.forEach(
+        (movie, index) => {
+
+            const row =
+                document.createElement("tr");
+
+            row.className =
+                "recommendation-row";
+
+            row.onclick = function() {
+                openModal(movie);
+            };
+
+            row.innerHTML = `
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td>
+
+                    <img
+                        src="${movie.image}"
+                        alt="${movie.title}"
+                    >
+
+                </td>
+
+                <td>
+                    ${movie.title}
+                </td>
+
+                <td>
+                    ${movie.genre}
+                </td>
+
+                <td>
+                    ⭐ ${movie.rating}
+                </td>
+
+            `;
+
+            body.appendChild(row);
+
+        }
+    );
 
 }
 
